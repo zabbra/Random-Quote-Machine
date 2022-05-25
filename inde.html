@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<title></title>
+
+  	<!-- bootstrap css stylesheet -->
+  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  	<!-- font-awesome stylesheet for icons -->
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  	<!-- custom css stylesheet -->
+  	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+  	<!-- jquery and bootstrap cdn js file -->
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  	<link rel="stylesheet" type="text/css" href="style.css">
+
+  	
+  	<script src="./jquery.js">
+		
+	</script>
+	<script type="text/javascript">
+		function getQuotes(index){
+			$.ajax({
+				url: 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json',
+    			type: 'GET',
+    			dataType: 'json',
+    			success: function(jsonData) {
+    				//alert(JSON.stringify(data));
+    				//console.log(JSON.stringify(jsonData))
+	    			 //console.log(jsonData.quotes.length)
+
+	    			 var indexQuote = Math.floor(Math.random()*jsonData.quotes.length)
+	    			 //console.log(indexQuote)
+	    			 var randomQuote=jsonData.quotes[indexQuote];
+	    			 //console.log(randomQuote)
+	    			 var quote=randomQuote.quote;
+	    			 //console.log(quote)
+	    			 var author=randomQuote.author;
+	    			 //console.log(author)
+	    			 $('.quote-text').animate({ opacity: 0 }, 500, function () {
+	    			 	$(this).animate({ opacity: 1 }, 500);
+	    			 	$('#data').text(quote);
+	    			 });
+
+	    			 $('.quote-author').animate({ opacity: 0 }, 500, function () {
+	    			 	$(this).animate({ opacity: 1 }, 500);
+	    			 	$('#author').text(author);
+	    			 });
+
+	    			 $('.col').css('background-color', index);
+	    			 $('#data').css('color', index);
+	    			 $('.quote-author').css('color', index);
+	    			 $('.fa-quote-left').css('color', index);
+	    			},
+	    			error: function(err) {
+	    				$('title').text("Oops something went wrong.");
+    			 	}});
+		}
+		
+		$(document).ready(function(){
+
+			$('#new-quote').on('click',function(){
+
+				 var color=[
+				 '#F64747',
+				 '#663399',
+				 '#4183D7',
+				 '#22313F',
+				 '#9A12B3',
+				 '#03A678',
+				  '#16a085',
+				  '#27ae60',
+				  '#2c3e50',
+				  '#f39c12',
+				  '#e74c3c',
+				  '#9b59b6',
+				  '#FB6964',
+				  '#342224',
+				  '#472E32',
+				  '#BDBB99',
+				  '#77B1A9',
+				  '#73A857'
+				 ]; /* array of hex color */
+    			var index=color[Math.floor(Math.random()*color.length)]; /* random color from color array */
+
+    			getQuotes(index)
+
+
+			})
+			
+		});
+	</script>
+</head>
+<body class="col">
+	<div class="container" id="wrapper">
+		<h1 class="text-center title"><b>The Random Quote Machine</b></h1>
+		<div class="row" id='quote-box'>
+			<div class="col-md-6 mx-auto" >
+				<div class="quote-box " id='quote-box'>
+					<div class='text-center quote-text ' id='text'>
+						<i class="fa fa-quote-left"></i>
+						<cite  id='data' >
+							Click New Quote button to get a quote.
+						</cite>
+					</div>
+					<div class="d-flex justify-content-end  quote-author">
+						- <span id ='author' >author</span>	
+					</div>
+					<div class=" buttons socialmedia d-flex justify-content-between ">
+						<div>
+							<a
+							href='#'
+							class="button btn btn-lg col "
+		        			id="tweet-quote"
+		        			title="Tweet this quote!"
+		        			target="_top"
+		      				>
+		        			<i class="fa fa-twitter text-white"></i>
+		      				</a>
+							
+							<a
+		      				href='#'
+							class="button btn btn-lg col "
+		        			id="tumblr-quote"
+		        			title="Post this quote on tumblr!"
+		        			target="_blank"
+		        			>
+		        			<i class="fa fa-tumblr text-white"></i>
+		      			</a>
+							
+						</div>
+						<div>
+							<button class="button btn btn-lg text-white  col" id="new-quote">New quote</button>
+							
+						</div>
+						
+		      			
+		      			
+					</div>
+
+					
+					
+				</div>
+				
+				
+			</div>
+			
+		</div>
+		
+		<div class="footer text-center mt-4 mb-4 text-white">by <a href="https://codepen.io/hezag/">hezag</a></div>
+		
+	</div>
+
+	<!-- jquery and bootstrap cdn js file -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!--
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+  -->
+
+</body>
+</html>
+
+

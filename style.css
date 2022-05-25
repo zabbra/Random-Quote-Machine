@@ -1,0 +1,35 @@
+.col{
+  			background-color:#342224;
+  		}
+  		a{
+  			text-decoration: none;
+  			color: #fff;
+  		}
+  		a:hover{
+  			color: #fff;
+  		}
+  		
+  		.title{
+  			margin-top:50px;
+  			font-family: 'Lobster', cursive;
+  			color: #fff; 
+  		}
+  		.quote-box{
+  			background-color: #ECF0F1;
+  			padding: 40px;
+  			margin: 0 auto;
+			margin-top: 12%;
+			margin-bottom: 15px;
+			border-radius: 4px; 
+  		}
+  		.quote-text{
+  			font-size: 1.8em;
+  		}
+  		.quote-author{
+  			padding-top: 40px;
+  		}
+  		.socialmedia {
+  			margin-top: 30px;
+  			
+  		}
+  		
